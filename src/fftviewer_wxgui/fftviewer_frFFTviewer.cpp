@@ -52,6 +52,7 @@ lmsControl(nullptr)
     averageCount.store(50);
     spinAvgCount->SetValue(averageCount);
     updateGUI.store(true);
+    enableFFT.store(true);
 #ifndef __unix__
     SetIcon(wxIcon(_("aaaaAPPicon")));
 #endif
