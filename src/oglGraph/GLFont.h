@@ -13,7 +13,7 @@
 struct GLGlyph
 {
     GLGlyph() : id(-1), width(0), height(0), u(0), v(0), offset_x(0), offset_y(0), advance_x(0) {};
-    void reset() { id = -1; width=0; height=0; u=0; v=0; offset_x=0, offset_y=0, advance_x=0; bitmap.clear();};
+    void reset() { id = -1; width=0; height=0; u=0; v=0; offset_x=0; offset_y=0; advance_x=0; bitmap.clear();};
     std::vector<unsigned char> bitmap;
     unsigned short id;
     unsigned short width;
