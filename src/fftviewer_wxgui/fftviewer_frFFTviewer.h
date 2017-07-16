@@ -60,7 +60,7 @@ protected:
 
         DataToGUI& operator=(const DataToGUI& src)
         {
-            for (int ch = 0; ch < cMaxChCount; ++ch)
+            for (auto ch = 0; ch < cMaxChCount; ++ch)
             {
                 this->samplesI[ch].clear();
                 this->samplesI[ch].reserve(src.samplesI[ch].size());

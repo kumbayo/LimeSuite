@@ -18,7 +18,7 @@ void fftviewer_frFFTviewer::Initialize(lms_device_t* pDataPort)
 {
     lmsControl = pDataPort;
     lmsIndex = 0;
-    for (unsigned i =0; i < this->cMaxChCount ; i++)
+    for (auto i = 0; i < this->cMaxChCount; i++)
     {
         this->rxStreams[i].handle = 0;
         this->txStreams[i].handle = 0;
@@ -348,7 +348,7 @@ void fftviewer_frFFTviewer::StreamingLoop(fftviewer_frFFTviewer* pthis, const un
 
     DataToGUI localDataResults;
     localDataResults.nyquist_Hz = 7.68e6;
-    for (unsigned i = 0; i < cMaxChCount; i++)
+    for (auto i = 0; i < cMaxChCount; i++)
     {
         localDataResults.samplesI[i].resize(fftSize, 0);
         localDataResults.samplesQ[i].resize(fftSize, 0);
