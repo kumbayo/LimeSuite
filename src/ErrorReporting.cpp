@@ -57,6 +57,11 @@ int lime::ReportError(const int errnum)
 int lime::ReportError(const int errnum, const char *format, va_list argList)
 {
     _reportedErrorCode = errnum;
-    vsnprintf(_reportedErrorMessage, MAX_MSG_LEN, format, argList);
+    if (format != _reportedErrorMessage) {
+        //Some code passes the result of GetLastErrorMessage to ReportError
+        //It is undefined behavior to pass the same buffer as str and format arguments to vsnprintf
+        //so in this case just reuse the existing buffer without changing it
+        vsnprintf(_reportedErrorMessage, MAX_MSG_LEN, format, argList);
+    }
     return errnum;
 }
