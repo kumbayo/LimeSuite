@@ -28,15 +28,9 @@
 #include "mcu_programs.h"
 
 #include "MCU_BD.h"
-const static uint16_t MCU_PARAMETER_ADDRESS = 0x002D; //register used to pass parameter values to MCU
-#define MCU_ID_DC_IQ_CALIBRATIONS 0x01
-#define MCU_FUNCTION_CALIBRATE_TX 1
-#define MCU_FUNCTION_CALIBRATE_RX 2
 
 using namespace std;
 using namespace lime;
-
-#include "MCU_BD.h"
 
 float_type LMS7002M::gVCO_frequency_table[3][2] = { { 3800e6, 5222e6 }, { 4961e6, 6754e6 }, {6306e6, 7714e6} };
 float_type LMS7002M::gCGEN_VCO_frequencies[2] = {1950e6, 2900e6};
