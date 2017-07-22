@@ -42,8 +42,6 @@ int loadGoertzelCoefficients(IConnection *dataPort, int32_t c)
 {
     const uint16_t c_msb = (c >> 16) & 0xFFFF;
     const uint16_t c_lsb =  c & 0x0000FFFF;
-    //dataPort->WriteRegister(C_COS_ADDR_MSB, c_msb);
-    //dataPort->WriteRegister(C_COS_ADDR_LSB, c_lsb);
     const uint32_t addrs[] = {C_COS_ADDR_MSB, C_COS_ADDR_LSB};
     const uint32_t values[] = {c_msb, c_lsb};
     return dataPort->WriteRegisters(addrs, values, 2);
