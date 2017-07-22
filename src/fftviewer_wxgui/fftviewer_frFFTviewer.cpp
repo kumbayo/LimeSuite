@@ -110,6 +110,7 @@ lmsControl(nullptr)
     //show only A channel at startup
     evt.SetInt(0);
     OnChannelVisibilityChange(evt);
+    OnWindowFunctionChange(evt);
 }
 
 fftviewer_frFFTviewer::~fftviewer_frFFTviewer()
