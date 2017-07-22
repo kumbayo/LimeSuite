@@ -32,7 +32,7 @@ public:
 
     int Open(const unsigned index);
     void Close();
-    bool IsOpen();
+    bool IsOpen() override;
     int GetOpenedIndex();
 
     int Write(const unsigned char *buffer, int length, int timeout_ms = 100) override;
@@ -66,7 +66,7 @@ private:
     };
 
     static const EPConfig deviceConfigs[];
-    eConnectionType GetType(void)
+    eConnectionType GetType(void) override
     {
         return PCIE_PORT;
     }

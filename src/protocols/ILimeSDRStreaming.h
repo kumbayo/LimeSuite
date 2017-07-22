@@ -90,20 +90,20 @@ public:
     ILimeSDRStreaming();
     virtual ~ILimeSDRStreaming();
 
-    virtual int SetupStream(size_t& streamID, const StreamConfig& config);
-    virtual int CloseStream(const size_t streamID);
-    virtual size_t GetStreamSize(const size_t streamID);
-    virtual int ControlStream(const size_t streamID, const bool enable);
-    virtual int ReadStream(const size_t streamID, void* buffs, const size_t length, const long timeout_ms, StreamMetadata& metadata);
-    virtual int WriteStream(const size_t streamID, const void* buffs, const size_t length, const long timeout_ms, const StreamMetadata& metadata);
-    virtual int ReadStreamStatus(const size_t streamID, const long timeout_ms, StreamMetadata& metadata);
+    virtual int SetupStream(size_t& streamID, const StreamConfig& config) override;
+    virtual int CloseStream(const size_t streamID) override;
+    virtual size_t GetStreamSize(const size_t streamID) override;
+    virtual int ControlStream(const size_t streamID, const bool enable) override;
+    virtual int ReadStream(const size_t streamID, void* buffs, const size_t length, const long timeout_ms, StreamMetadata& metadata) override;
+    virtual int WriteStream(const size_t streamID, const void* buffs, const size_t length, const long timeout_ms, const StreamMetadata& metadata) override;
+    virtual int ReadStreamStatus(const size_t streamID, const long timeout_ms, StreamMetadata& metadata) override;
 
-    virtual int UpdateExternalDataRate(const size_t channel, const double txRate_Hz, const double rxRate_Hz) = 0;
-    virtual void EnterSelfCalibration(const size_t channel);
-    virtual void ExitSelfCalibration(const size_t channel);
-    virtual uint64_t GetHardwareTimestamp(void);
-    virtual void SetHardwareTimestamp(const uint64_t now);
-    virtual double GetHardwareTimestampRate(void);
+    virtual int UpdateExternalDataRate(const size_t channel, const double txRate_Hz, const double rxRate_Hz) override = 0;
+    virtual void EnterSelfCalibration(const size_t channel) override;
+    virtual void ExitSelfCalibration(const size_t channel) override;
+    virtual uint64_t GetHardwareTimestamp(void) override;
+    virtual void SetHardwareTimestamp(const uint64_t now) override;
+    virtual double GetHardwareTimestampRate(void) override;
 
     int UploadWFM(const void* const* samples, uint8_t chCount, size_t sample_count, StreamConfig::StreamDataFormat format, int epIndex) override;
 

@@ -84,7 +84,7 @@ public:
 
     int Open(const unsigned index, const int vid, const int pid);
     void Close();
-    bool IsOpen();
+    bool IsOpen() override;
     int GetOpenedIndex();
 
     virtual int Write(const unsigned char *buffer, int length, int timeout_ms = 100) override;
@@ -110,7 +110,7 @@ protected:
 
     int ResetStreamBuffers() override;
 
-    eConnectionType GetType(void) {return USB_PORT;}
+    eConnectionType GetType(void) override {return USB_PORT;}
 
     USBTransferContext contexts[USB_MAX_CONTEXTS];
     USBTransferContext contextsToSend[USB_MAX_CONTEXTS];

@@ -99,7 +99,7 @@ public:
 
     int Open(const std::string &vidpid, const std::string &serial, const unsigned index);
     void Close();
-    bool IsOpen();
+    bool IsOpen() override;
     int GetOpenedIndex();
 
     virtual int Write(const unsigned char* buffer, int length, int timeout_ms = 100) override;
@@ -109,7 +109,7 @@ public:
     virtual int UpdateExternalDataRate(const size_t channel, const double txRate, const double rxRate) override;
     virtual int UpdateExternalDataRate(const size_t channel, const double txRate, const double rxRate, const double txPhase, const double rxPhase) override;
     virtual int ProgramWrite(const char *buffer, const size_t length, const int programmingMode, const int device, ProgrammingCallback callback) override;
-    int ProgramUpdate(const bool download, ProgrammingCallback callback);
+    int ProgramUpdate(const bool download, ProgrammingCallback callback) override;
     int ReadRawStreamData(char* buffer, unsigned length, int epIndex, int timeout_ms = 100)override;
 protected:
     virtual void ReceivePacketsLoop(Streamer* args) override;
@@ -128,7 +128,7 @@ protected:
     virtual void AbortSending(int ep);
 
     int ResetStreamBuffers() override;
-    eConnectionType GetType(void) {return USB_PORT;}
+    eConnectionType GetType(void) override {return USB_PORT;}
 
     double DetectRefClk(void);
 
