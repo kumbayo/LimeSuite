@@ -25,7 +25,6 @@ protected:
     std::atomic<bool> enableFFT;
     std::string captureFilename;
     // Handlers for frFFTviewer events.
-    void OnWindowFunctionChanged( wxCommandEvent& event );
     void OnbtnStartStop( wxCommandEvent& event );
     void OnChannelVisibilityChange(wxCommandEvent& event);
     void OnStreamChange(wxCommandEvent& event);

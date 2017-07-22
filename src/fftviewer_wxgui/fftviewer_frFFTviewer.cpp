@@ -118,11 +118,6 @@ fftviewer_frFFTviewer::~fftviewer_frFFTviewer()
         StopStreaming();
 }
 
-void fftviewer_frFFTviewer::OnWindowFunctionChanged( wxCommandEvent& event )
-{
-    windowFunctionID.store(cmbWindowFunc->GetSelection());
-}
-
 void fftviewer_frFFTviewer::OnbtnStartStop( wxCommandEvent& event )
 {
     if (mStreamRunning == false)
