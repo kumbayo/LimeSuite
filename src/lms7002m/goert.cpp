@@ -33,9 +33,9 @@ void getGoertzelCoefficients(int k, int SP, int32_t *c, int32_t *s)
     phi = wn * k;
 
     if(c)
-        *c =  cos(phi) * (~(1 << (C_TRIG_LEN-1)) );
+        *c =  cos(phi) * (~(1u << (C_TRIG_LEN-1)) );
     if(s)
-        *s =  sin(phi) * (~(1 << (C_TRIG_LEN-1)) );
+        *s =  sin(phi) * (~(1u << (C_TRIG_LEN-1)) );
 }
 
 int loadGoertzelCoefficients(IConnection *dataPort, int32_t c)
@@ -209,8 +209,8 @@ for(int k = fftBin-span; k <= fftBin+span; k++)
     mul = 0;
     // Precompute the constants for the current bin
     phi = wn * k;
-    c = cos(phi) * (~(1 << (trig_length-1)) );
-    s = sin(phi) * (~(1 << (trig_length-1)) );
+    c = cos(phi) * (~(1u << (trig_length-1)) );
+    s = sin(phi) * (~(1u << (trig_length-1)) );
     // Emulate data shift
     for(n=0; n<Sp; n++)
     {

@@ -95,7 +95,7 @@ int ConnectionSTREAM::UpdateExternalDataRate(const size_t channel, const double 
         dataWr[0] = (uint32_t(0x0020) << 16);
         ReadLMS7002MSPI(dataWr.data(), &reg20, 1, channel);
 
-        dataWr[0] = (1 << 31) | (uint32_t(0x0020) << 16) | 0xFFFD; //msbit 1=SPI write
+        dataWr[0] = (1u << 31) | (uint32_t(0x0020) << 16) | 0xFFFD; //msbit 1=SPI write
         WriteLMS7002MSPI(dataWr.data(), 1, channel);
 
         for (int i = 0; i < bakRegCnt; ++i)
@@ -112,7 +112,7 @@ int ConnectionSTREAM::UpdateExternalDataRate(const size_t channel, const double 
             //Load test config
             const int setRegCnt = spiData.size();
             for (int i = 0; i < setRegCnt; ++i)
-                dataWr[i] = (1 << 31) | (uint32_t(spiAddr[i]) << 16) | spiData[i]; //msbit 1=SPI write
+                dataWr[i] = (1u << 31) | (uint32_t(spiAddr[i]) << 16) | spiData[i]; //msbit 1=SPI write
             WriteLMS7002MSPI(dataWr.data(), setRegCnt, channel);
         }
         lime::fpga::FPGA_PLL_clock clocks[2];
@@ -140,7 +140,7 @@ int ConnectionSTREAM::UpdateExternalDataRate(const size_t channel, const double 
             //Load test config
             const int setRegCnt = spiData.size();
             for (int i = 0; i < setRegCnt; ++i)
-                dataWr[i] = (1 << 31) | (uint32_t(spiAddr[i]) << 16) | spiData[i]; //msbit 1=SPI write
+                dataWr[i] = (1u << 31) | (uint32_t(spiAddr[i]) << 16) | spiData[i]; //msbit 1=SPI write
             WriteLMS7002MSPI(dataWr.data(), setRegCnt, channel);
         }
 
@@ -169,9 +169,9 @@ int ConnectionSTREAM::UpdateExternalDataRate(const size_t channel, const double 
     {
         //Restore registers
         for (int i = 0; i < bakRegCnt; ++i)
-            dataWr[i] = (1 << 31) | (uint32_t(spiAddr[i]) << 16) | dataRd[i]; //msbit 1=SPI write
+            dataWr[i] = (1u << 31) | (uint32_t(spiAddr[i]) << 16) | dataRd[i]; //msbit 1=SPI write
         WriteLMS7002MSPI(dataWr.data(), bakRegCnt, channel);
-        dataWr[0] = (1 << 31) | (uint32_t(0x0020) << 16) | reg20; //msbit 1=SPI write
+        dataWr[0] = (1u << 31) | (uint32_t(0x0020) << 16) | reg20; //msbit 1=SPI write
         WriteLMS7002MSPI(dataWr.data(), 1, channel);
         WriteRegister(0x000A, 0);
     }

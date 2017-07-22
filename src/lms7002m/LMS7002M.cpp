@@ -1875,7 +1875,7 @@ int LMS7002M::SPI_write_batch(const uint16_t* spiAddr, const uint16_t* spiData, 
     std::vector<uint32_t> data(cnt);
     for (size_t i = 0; i < cnt; ++i)
     {
-        data[i] = (1 << 31) | (uint32_t(spiAddr[i]) << 16) | spiData[i]; //msbit 1=SPI write
+        data[i] = (1u << 31) | (uint32_t(spiAddr[i]) << 16) | spiData[i]; //msbit 1=SPI write
 
         //write which register cache based on MAC bits
         //or always when below the MAC mapped register space

@@ -58,7 +58,7 @@ void LMS7002M_Novena_wxgui::UpdatePanel()
     if (lmsControl == nullptr)
         return;
 
-    uint32_t dataWr = (1<<31) | (0x0806 << 16);
+    uint32_t dataWr = (1u<<31) | (0x0806 << 16);
     uint16_t dataRd = 0;
     int status;
     status = LMS_ReadLMSReg(lmsControl,dataWr>>16,&dataRd);
@@ -117,7 +117,7 @@ void LMS7002M_Novena_wxgui::ParameterChangeHandler(wxCommandEvent& event)
     value |= lms_gpio2->GetValue() << 2;
     value |= lms_gpio1->GetValue() << 1;
     value |= lms_gpio0->GetValue() << 0;
-    uint32_t dataWr = (1 << 31) | (0x0806 << 16) | (value & 0xFFFF);
+    uint32_t dataWr = (1u << 31) | (0x0806 << 16) | (value & 0xFFFF);
     int status;
     status = LMS_WriteLMSReg(lmsControl,dataWr>>16,value);
     if (status != 0)
