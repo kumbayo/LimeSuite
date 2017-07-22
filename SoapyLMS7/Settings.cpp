@@ -549,7 +549,7 @@ void SoapyLMS7::setFrequency(const int direction, const size_t channel, const st
             rfic->Modify_SPI_Reg_bits(LMS7param(CMIX_SC_TXTSP), (frequency < 0)?neg:pos);
             break;
         }
-        if (rfic->SetNCOFrequency(lmsDir, 0, abs(frequency)) != 0)
+        if (rfic->SetNCOFrequency(lmsDir, 0, std::abs(frequency)) != 0)
         {
             //rate was out of bounds, clip to the maximum frequency
             const double dspRate = rfic->GetReferenceClk_TSP(lmsDir);
